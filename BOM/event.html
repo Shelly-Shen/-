@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>event</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2>EVENT</h2>
+<h1>1.焦点事件</h1>
+<p>1.onfocus:当元素获取到焦点的时候触发<br />
+2.onblur：当元素失去焦点的时候触发<br />
+3.obj.focus()：给指定元素设置焦点<br />
+4.obj.blur()：取消指定焦点<br />
+5.obj.select()：选择指定的文本内容  </p>
+<h1>2.event:事件对象</h1>
+<p>当一个事件发生的时候，和当前这个对象发生的这个事件有关的一些详细信息都会被临时保存到一个指定的地方-event对象，在需要的调用。（飞机-黑匣子）   </p>
+<p>事件对象必须在一个事件调用的函数里面使用才有内容<br />
+事件函数：事件调用函数，一个函数是不是事件函数，不在定义的决定，而是取决于这函数调用的时候</p>
+<p>兼容：ie/chrome :event是一个内置全局对象 </p>
+<pre><code>function fn1(){
+    alert(event);
+}
+document.onclick = fn1;
+</code></pre>
+
+<p>标准下:事件对象是通过事件函数的第一个参数传入的（如果一个函数是被事件调用的那么这个函数定义的第一个参数就是事件对象）  </p>
+<pre><code>function fn1(ev){
+    alert(ev);
+}
+document.onclick = fn1;  
+</code></pre>
+
+<h1>3.冒泡</h1>
+<p>1.事件冒泡：当一个元素接收到一个事件的时候，会把他接收到的事件传播给他的父级。一直到顶层window.事件冒泡机制<br />
+2.阻止冒泡：当前要阻止冒泡的事件函数中调用event.cancelBubble = true;  </p>
+<h1>4.事件绑定的第二种形式：</h1>
+<p>1.给是一个对象绑定一个事件处理函数的第一种形式：</p>
+<pre><code>function fn1(){
+alert(1);
+}
+document.onclick = fn1;//是赋值形式，若绑定两个函数，则前面被覆盖
+</code></pre>
+
+<p>2.给一个对象绑定一个事件处理函数的第二种形式（给一个对象的同一个事件绑定多个不同的函数）：<br />
+(1)ie：obj.attachEvent(事件名称，事件函数); <br />
+[1].没有捕获<br />
+[2].事件名称有on<br />
+[3].事件函数的执行顺序：标准ie-&gt;正序   非标准ie-&gt;倒序<br />
+*[4].this指向window</p>
+<pre><code>function fn1(){
+alert(1);
+}
+function fn2(){
+alert(2);
+}
+document.attachEvent('onclick',fn1);
+documeny.attachEvent('onclick',fn2);
+</code></pre>
+
+<p>(2)标准：obj.addEventListener(事件名称,事件函数,是否捕获);<br />
+是否捕获：默认是false false:冒泡 true:捕获<br />
+[1].有捕获<br />
+[2].事件名称没有on<br />
+[3].事件函数执行的顺序是正序<br />
+[4].this指向触发该事件的对象   </p>
+<pre><code>function fn1(){
+alert(1);
+}
+function fn2(){
+alert(2);
+}
+document.addEventListener('click',fn1,false)
+document.addEventListener('click',fn2,false)  
+</code></pre>
+
+<h1>5.call:</h1>
+<p>函数下的一个方法，call方法的第一个参数可以改变函数执行过程中的内部this指向，call方法的第二个参数开始就是原来函数的参数列表<br />
+1.</p>
+<pre><code>function fn1(a,b){
+alert(this);
+alert(a+b);
+}
+fn1();//弹出window
+fn1.call(1,10,20);  //弹出1 再弹出30  fn1() == fbn.call()
+</code></pre>
+
+<p>2.</p>
+<pre><code>document.attachEvent('onclick',function(){
+    fn1.call(document);
+}); //this指向document 解决了指向window的问题
+</code></pre>
+
+<p>大结局：</p>
+<pre><code>function fn1(){
+        alert(1);
+    }
+    function bind(obj,evname,fn){
+        if(obj.addEventListener){
+            obj.addEventListener(evname,fn,false);
+        }else{
+            obj.attach('on'+evname,function(){
+                obj.call(obj);
+            })
+        }
+    }
+    bind(document,'click',fn1);
+</code></pre>
+
+<h1>6.事件捕获</h1>
+<h1>7.事件函数的取消</h1>
+<p>1.第一种事件绑定形式的取消  </p>
+<pre><code>function fn1(){
+alert(1);
+}
+document.onclick = fn1;
+document.onclick =  null;
+</code></pre>
+
+<p>1.第二种事件绑定形式的取消<br />
+ie:obj.detachEvent(事件名称,事件函数);
+标准:obj.removeEventListener(事件名称,事件函数);</p>
+<pre><code>document.removeEventListener('click',fn1,false);    
+</code></pre>
+
+<h1>键盘事件</h1>
+<p>1.onkeydown:当键盘按键按下的时候触发（如果按住不抬起会连续触发）<br />
+2.onkeyup:当键盘按键抬起的时候触发<br />
+3.
+event.keyCode:数字类型 键盘按键的值 键值 <br />
+  ctrlKey,shiftKey,altKey --&gt; 返回布尔值<br />
+当一个事件发生的时候，如果ctrl||shift||alt是按下的状态，返回true,否则返回false<br />
+	不是所有元素都能接收键盘事件，能够相应用户输入元素，即能够接收焦点的元素就能接收键盘事件</p>
+<h1>事件默认行为：</h1>
+<p>当一个事件发生时浏览器自己默认做的事情<br />
+怎么阻止？<br />
+当前这个行为时什么事件触发的，然后再这个事件处理函数中使用return false;
+1.oncontextmenu:右键菜单事件，当右键菜单（环境菜单）显示出来的时候触发  </p>
+<h1>全局捕获</h1>
+<p>1.elem:setCapture():设置全局捕获<br />
+当我们给一个元素设置全局捕获以后，那么这个元素会监听到后续发生的所有事件，当有事件发生的事件，就会被当前设置了全局捕获的元素所触发<br />
+ie:有，并且有效果<br />
+ff:有,但没有效果<br />
+chrome:没有<br />
+2.1.elem:releaseCapture():设置全局捕获   </p>
+<h1>鼠标滚轮</h1>
+<p>1.ie/chrome:onmousewheel   </p>
+<pre><code>oDiv.onmousewheel = fn1;
+function fn(){
+    alert(1);
+}
+</code></pre>
+
+<p>event.wheelDelta 上：120 下-120 <br />
+2.firefox:DOMMousseScroll 必须用addEventListener  </p>
+<pre><code>if(oDiv.addEventListener){
+oDiv.addEventListener('DOMMousseScroll',fn,false);
+} 
+</code></pre>
+
+<p>event.detail 上：-3 下：3   </p>
+<p>大结局 </p>
+<pre><code>function fn(ev){
+var ev = ev||event;
+var b = true;
+if(oDiv.onmousewheel){
+b = ev.wheelDelta&gt;0?ture:flase;
+}else{
+b = ev.detail&lt;0?ture:flase;
+}
+if(b){
+    this.style.height = this.offsetHeight+10+'px';
+}else{
+    this.style.height = this.offsetHeight-10+'px';
+}
+if(preventDefault){
+preventDefault();
+}
+return false;
+}  
+</code></pre>
+
+<p>return false阻止的时  obj.on事件名称 = fn所触发的默认行为<br />
+addEventListener绑定的事件需要通过event下面的preventDefault();  </p>
+<h2>cookie</h2>
+<p>存储数据，当用户访问某个网站（网页）的时候，我们就可以通过cookie来向访问者电脑上存储数据.<br />
+1.不同浏览器存放的cookie位置不一样，也是不能通用的<br />
+2.cookie的存储是以域名形式进行区分的<br />
+3.cookie的数据可以设置名字
+的:document.cookie = &quot;名字=值&quot;;  <br />
+我们通过document.cookie来获取当前网站下的cookie的时候，得到字符串形式的值,他包含了当前下所有的cookie。它会把所有的k=cookie通过一个分号加空格的形式串起来<br />
+4.一个域名下存放的cookie的个数是有限制的，不同的浏览器存放的个数不一样<br />
+5.每一个cookie存放的内容大小也是有限制的，不同的浏览器存放的大小不一样<br />
+如果我们想长时间存放cookie需要再设置这个cookie的时候设置一个过期的时间  ：document.cookie = '名称=值；expires='+字符串格式的时间；<br />
+*cookie默认是临时存储的,关闭整个浏览器的时间自动销毁</p>
+<pre><code>var oDate = new Date();
+oDate.setDate(oDate.getDate()+5);
+document.cookie = 'username=leo;expires='+oDate.toGMTString();
+</code></pre>
+
+<p>*内容最好编码存放,encodeURI  </p>
+<pre><code>document.cookie = 'username='+encodeURI('leo/n你好')+';expires='+oDate.toGMTString();
+alert(decodeURI(document.cookie));  
+</code></pre>
+
+<p>获取单个元素值  </p>
+<pre><code>//设置cookie
+function setCookie(key,value,t){
+var oDate = new Date();
+oDate.setDate(oDate.getDate()+t);
+document.cookie = key + '=' + value +';expire=' + oDate.toGMTString();
+}
+//获取cookie
+function getCookie(key){
+var arr1 = document.cookie.split(';');
+for(var i = 0;i&lt;arr1.length;i++){
+    var arr2 = arr1.split('=');
+    if(arr2[0] == key){
+        return decodeURI(arr2[1]);
+    }
+}
+}
+alert(getCookie('username'));
+//移除cookie
+function removeCookie(key){
+setCookie('key','',-1);
+}
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

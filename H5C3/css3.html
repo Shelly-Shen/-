@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>css3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>box-shadow</h3>
+<pre><code>box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+</code></pre>
+
+<p>第一个是外阴影，第二个是内嵌阴影，注意看inset这个属性</p>
+<h3>线性渐变liner-gradient</h3>
+<pre><code>background:liner-gradient(to bottom,#fff,#999)
+                        渐变方向等价与180deg           颜色的起始点和终点
+</code></pre>
+
+<h3>径向渐变radial-gradient</h3>
+<p><a href="http://www.css88.com/book/css/values/image/radial-gradient().htm">http://www.css88.com/book/css/values/image/radial-gradient().htm</a></p>
+<h3>border-image:url 切割图片的像素 方式（round圆满的铺满|stretch拉伸|repeat重复）;</h3>
+<pre><code>border-image:url(border.png) 70 70 70 70 round;
+</code></pre>
+
+<p><img src="border-image2.png" /><br />
+<img src="border-image1.png" /><br />
+<img src="border-image3.png" /></p>
+<h4>.text-overflow:</h4>
+<p>设置是否使用省略标记<br />
+text-overflow:clip(剪切)|ellipsis(显示省略标记)  </p>
+<h4>white-space:nowrap</h4>
+<p>强制文本在一行显示  </p>
+<h4>overflow:hidden</h4>
+<p>溢出内容为隐藏</p>
+<h4>word-wrap:</h4>
+<p>文本超过容器边界时是否转行<br />
+normal(控制连续文本换行)|break-word(内容将在边界内换行
+<code>javascript
+  text-overflow:epllipsis;
+  overflow:hidden;
+  white-space:nowrap;</code>
+<img src="text-overflow.png" /><br />
+<img src="text-overflow2.png" /></p>
+<h4>@font-face</h4>
+<p>自定义字体
+<code>javascript
+    @font-face{
+    font-family:字体名称；
+    src:字体文件路径
+    }</code></p>
+<h4>text-shadow</h4>
+<p><code>text-shadow:x-Offset Y-Offset blur color;</code>
+blur:阴影的模糊程度，不能为负<br />
+text-shadow: 2px 2px 20px red,-2px -2px 20px white;加逗号可以设置多个阴影</p>
+<h4>background-origin</h4>
+<p>背景图片的起始点
+border-box:从边框<br />
+padding-box:从内边距<br />
+content-box:从内容区域即其子元素<br />
+<img src="background-origin.jpg" /></p>
+<h4>background-clip</h4>
+<p>裁剪背景位置<br />
+属性:<br />
+border-box <br />
+padding-box<br />
+content-box</p>
+<p><img src="background-clip.jpg" /></p>
+<h4>background-size</h4>
+<p>值：
+auto：使用默认值
+长度值：200px 50px
+百分比
+cover:覆盖，等比缩放填满整个容器
+contain:容纳，等比缩放至贴紧容器边缘</p>
+<p><img src="multiple-backgrounds.png" /></p>
+<h2>伪类选择器</h2>
+<p><img src="E[attr].png" /></p>
+<h3>root根选择器</h3>
+<h3>not否定选择器</h3>
+<pre><code>    div:not([id=footer]){
+    background:orange;
+}
+</code></pre>
+
+<h3>:empty</h3>
+<p>选择器表示的就是空。用来选择没有任何内容的元素，这里没有内容指的是一点内容都没有，哪怕是一个空格。</p>
+<h3>:target</h3>
+<p>选择器称为目标选择器，用来匹配文档(页面)的url的某个标志符的目标元素。我们先来上个例子，然后再做分析。</p>
+<pre><code>#brand:target p {
+    background: orange;
+     color: #fff;
+}
+&lt;/style&gt;
+&lt;/head&gt; 
+&lt;body&gt;
+    &lt;div class=&quot;menuSection&quot; id=&quot;brand&quot;&gt;
+        &lt;h2&gt;&lt;a href=&quot;#brand&quot;&gt;Brand&lt;/a&gt;&lt;/h2&gt;
+        &lt;p&gt;content for Brand&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p>URL 带有后面跟有锚名称 #，指向文档内某个具体的元素。这个被链接的元素就是目标元素(target element)</p>
+<h3>：first-child</h3>
+<h3>:last-child</h3>
+<h3>nth-child(n)</h3>
+<h3>nth-last-child()</h3>
+<h3>first-of-type</h3>
+<h3>last-of-type</h3>
+<h3>nth-of-type()</h3>
+<h3>nth-last-of-type()</h3>
+<h3>only-child</h3>
+<h3>only-of-type</h3>
+<h3>:enabled</h3>
+<h3>disabled</h3>
+<h3>:selected(鼠标选择)</h3>
+<h3>:checked</h3>
+<h3>read-only</h3>
+<h3>read-write</h3>
+<h3>::after ::before</h3>
+<h2>变形</h2>
+<h3>rotate旋转</h3>
+<pre><code>transform:rotate(20deg);
+</code></pre>
+
+<p>正值为顺时针</p>
+<h3>skew扭曲</h3>
+<pre><code>transform:skem(20deg,5deg);
+</code></pre>
+
+<p><img src="skew.png" /></p>
+<h3>scale缩放</h3>
+<pre><code>transform:scale(1.8,1.8);
+</code></pre>
+
+<p>前值为X轴方向，后值为y轴方向（即宽高）<br />
+<strong>注意</strong>： scale()的取值默认的值为1，当值设置为0.01到0.99之间的任何值，作用使一个元素缩小；而任何大于或等于1.01的值，作用是让元素放大</p>
+<h3>translate位移</h3>
+<pre><code>transform:translate(100px,100px);
+transform；translate(50%,50%);
+</code></pre>
+
+<h3>matrix矩阵</h3>
+<p><a href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%E7%9F%A9%E9%98%B5/" title="matrix">http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%E7%9F%A9%E9%98%B5/</a><br />
+<strong>Matrix()与translate()关系：translate(x,y)对应Matrix(1,0,0,1,x,y);<br />
+Matrix()与scale()关系：scale(x,y)对应Matrix(x,0,0,y,0,0);<br />
+Matrix()与rotate()关系：rotate(x)对应Matrix(cos(x),sin(x),-sin(x),cos(x),0,0)<br />
+Matrix()与skew()关系：skew(x,y)对应Matrix(1,tan(x),tan(y),1,0,0)</strong> </p>
+<h3>transform-origin</h3>
+<p>用来设置元素的运动基点，transfrom-origin：50% 50%表示元素运动基点在整个中心是个默认值。px代表元素运动离元素运动基点的距离</p>
+<h2>动画</h2>
+<p><img src="transition.png" /></p>
+<h3>transition-property过渡属性</h3>
+<pre><code>指定过渡的css属性
+</code></pre>
+
+<p><img src="transition-property.png" />  </p>
+<p><img src="transition-property2.png" /><br />
+假设你的初始状态设置了样式“width”,“height”,“background”,当你在终始状态都改变了这三个属性，那么all代表的就是“width”、“height”和“background”。</p>
+<h3>transition-duration动画时间</h3>
+<p>从一个属性过渡到另一个属性需要的时间</p>
+<pre><code>transition-duration:0.2s;
+</code></pre>
+
+<h3>transition-delay过渡延迟时间</h3>
+<p>触发动作，过渡开始前的时间</p>
+<pre><code>transition-delay:.2s;
+</code></pre>
+
+<h3>transition-timing-function过渡函数</h3>
+<p><strong>值：</strong><br />
+ease:速度由快至慢<br />
+linear:匀速<br />
+ease-in:渐显(加速) （比ease效果更明显） <br />
+ease-out:渐隐（减速）<br />
+ease-in-out:渐显渐隐（先加速再减速）  </p>
+<h3>keyframes关键帧</h3>
+<pre><code>@keyframes changecolor{
+    0%{
+        background:yellow;
+    }
+    40%{
+        background:red;
+    }
+    60%{
+        background:blue;
+    }
+}
+div:hover{
+    animation:changecolor 5s ease-in .2s;
+}   
+</code></pre>
+
+<h3>animation-name</h3>
+<p><strong>值：</strong><br />
+none：无动画效果，可用覆盖任何动画<br />
+indent:@keyframes创建的动画名</p>
+<h3>animation-duration动画时间</h3>
+<h3>animation-timing-function动画播放方式</h3>
+<h3>animation-delay多长时间以后开始播放动画</h3>
+<h3>animation-iteration-count 动画重复次数</h3>
+<p><strong>值：</strong><br />
+infinite无限或数字<br />
+	animation-iteration-count:5;	</p>
+<h3>animation-direction</h3>
+<p><strong>值：</strong><br />
+normal:每次循环都是向前播放 <br />
+alternate:偶数次向前播放，奇数次反向（反复）	</p>
+<h3>animation-play-state</h3>
+<p><strong>值：</strong><br />
+paused暂停 <br />
+running播放（从暂停的地方开始播放）</p>
+<pre><code>demo:当鼠标放到元素上时元素才会移动    
+div{
+    animation:move;
+    animation-duration:10s;
+    animation-timing-function:ease-in;
+    animation-delay:2s;
+    animation-direction:alterate;
+    animation-play-state:paused;    
+}
+div:hover{
+    animation-play-state:running;   
+}
+</code></pre>
+
+<h3>animation-fill-mode</h3>
+<p><strong>值：</strong><br />
+none：动画结束后回到初始帧状态<br />
+forwards:动画结束后停止在最后一帧状态<br />
+backwards:在animate-delay指定的时间之前应用初始帧 <br />
+both:forwards+backwards</p>
+<h2>3D转换</h2>
+<p><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/</a></p>
+<h2>布局</h2>
+<h3>columns多列布局</h3>
+<p><strong>值：</strong>
+width+列数‘</p>
+<pre><code>columns:150px 3;
+</code></pre>
+
+<h5>column-width:</h5>
+<h5>column-count:</h5>
+<h5>column-gap列间距：</h5>
+<h5>column-rule列边框</h5>
+<h5>column-span跨所有列：all|none(不跨列)</h5>
+<pre><code>column-count: 3;
+column-gap: 2em;
+column-rule:1px solid red;
+</code></pre>
+
+<p><img src="colums.png" /></p>
+<h3>盒模型box-sizing</h3>
+<p><img src="border-box.jpg" />
+在自适应布局中通常会因为padding将布局打乱，border-box可解决</p>
+<pre><code>.dov1{
+    width:60%;
+}
+.div2{
+    width:40%;
+    padding:40px;   
+    box-sizing:borde-box;
+}
+</code></pre>
+
+<h3>伸缩布局</h3>
+<p><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool
+</a></p>
+<p>display:flex;<br />
+主轴方向flex-direction:row|row-reverse|column|column-reverse<br />
+决定侧轴flex-wrap:nowrap|wrap|wrap-reverse<br />
+以上简写：flex-flow:&lt;flex-direction&gt;值 flex-wrap值； </p>
+<p>主轴对其方式：justify-content:flex-start|flex-end|center|space-between|space-around  <br />
+侧轴对其方式:align-items:flex-start|flex-end|center|stretch|baseline<br />
+多行侧轴对其方式：align-content:flex-start|flex-end|center|space-between|space-around </p>
+<p>排列顺序：order:数字（数值越小排列越靠前）<br />
+若想设置两个元素一个排第一，一个排最后则需将前者设为-1；后者设为0即可</p>
+<p>放大flex-grow：数字（按元素比例，默认为0）<br />
+缩小flex-shrink:数字（按元素比例2倍3倍等，默认为1）<br />
+伸缩基准值：flex-basis:auto(默认)|<length px><br />
+以上三种属性的缩写flex:none(0 0 auto)|[flex-grow(必须) flex-shrink(可选) flex-basis(可选)] （默认为0 1 auto）
+flex-self覆盖align-items</p>
+<h2>媒体类型</h2>
+<p>常用：srceen(电脑屏幕) all(全部) print(打印或打印预览模式   </p>
+<h3>媒体类型引用</h3>
+<h4>1.media方法</h4>
+<p>（1）link中调用</p>
+<pre><code>&lt;link style=&quot;text/css&quot; url=&quot;&quot; rel=&quot;stylesheet&quot; media=&quot;srceen&quot; &gt;&lt;/link&gt;
+//默认为all
+</code></pre>
+
+<p>（2）样式文件中引用媒体类型</p>
+<pre><code>@media srceen{
+    选择器{样式代码}
+}
+</code></pre>
+
+<p>（3）在head中调用</p>
+<pre><code>&lt;head&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        @media{
+            选择器{样式代码}
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+</code></pre>
+
+<h4>1.@import</h4>
+<p>用法同media，除media的第一个方法外
+（1）</p>
+<pre><code>@importurl(reset.css) print;
+</code></pre>
+
+<p>（2）ie6,ie7不兼容</p>
+<pre><code>&lt;head&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        @importurl(reset.css) all;
+    &lt;/style&gt;
+&lt;/head&gt;
+</code></pre>
+
+<h3>media queries使用方法</h3>
+<h4>最大最小宽度max-width/min-width</h4>
+<p>定义适用于何种屏幕大小的设备中</p>
+<pre><code>@media srceen and (max-width:800px){
+    .ads{
+        display:none;
+    }   
+}
+//当屏幕等于或小于800px时，广告窗口消失
+@media srceen and (min-width:800px){
+    .wrapper{
+        width:900px;
+    }
+}
+//当屏幕大于800px时，.wrapper容器宽度变为900px
+</code></pre>
+
+<p>综合</p>
+<pre><code>@media srceen and (min-width:300px) and (max-width:800px);
+</code></pre>
+
+<h4>限制设备宽度</h4>
+<pre><code>&lt;link rel=&quot;sheetstyle&quot; media=&quot;srceen and (max-device-width:450px)&quot; href=&quot;iphone.css&quot;&gt;
+//iphone.css”样式适用于最大设备宽度为480px，比如说iPhone上的显示
+</code></pre>
+
+<h4>not</h4>
+<pre><code>@media not print and (max-width:1200px){样式}
+//样式代码将被使用在除打印设备和设备宽度小于1200px下所有设备中
+</code></pre>
+
+<h4>only</h4>
+<pre><code>@&lt;link rel=&quot;sheetstyle&quot; media=&quot;only srceen and(max-device-width:450px)&quot; href=&quot;android240.css&quot;&gt;
+</code></pre>
+
+<h4>多条语句</h4>
+<pre><code>&lt;link rel=&quot;sheetstyle&quot; media=&quot;srceen and(max-width:800px), handheld and(max-width:480px)&quot; href=&quot;&quot;&gt;
+</code></pre>
+
+<h3>响应式responsive设计</h3>
+<h4>条件</h4>
+<p>1.流体网格<br />
+2.弹性图片</p>
+<pre><code>img{max-width:100%};
+
+来看一个断点解决图片自适应的例子。
+&lt;img src=&quot;image.jpg&quot; data-src-600px=&quot;image-600px.jpg&quot; data-src-800px=&quot;image-800px.jpg&quot; alt=&quot;&quot; /&gt;
+</code></pre>
+
+<p>3.媒体查询<br />
+根据设备的尺寸，查询出适配的样式</p>
+<p><strong>注意：</strong>
+在Responsive布局中，可以毫无保留的丢弃：<br />
+第一， 尽量少用无关紧要的div；<br />
+第二，不要使用内联元素（inline）；<br />
+第三，尽量少用JS或flash；<br />
+第四，丢弃没用的绝对定位和浮动样式；<br />
+第五，摒弃任何冗余结构和需要使用100%设置</p>
+<h4>meta标签</h4>
+<p><meta name="" content="">
+<img src="content.jpg" /></p>
+<pre><code>&lt;meta name=”viewport” content=”width=device-width,minimun-scale=1.0” /&gt;
+//适应设备宽度，不可缩放
+</code></pre>
+
+<p>为适应IE老版本的脚本</p>
+<pre><code>media-queries.js(http://code.google.com/p/css3-mediaqueries-js/)      
+
+respond.js(https://github.com/scottjehl/Respond)
+
+&lt;!—[if lt IE9]&gt;
+  &lt;scriptsrc=http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js&gt;&lt;/script&gt;
+​&lt;![endif]&gt;
+</code></pre>
+
+<h3>实例</h3>
+<p>1.1024px显屏</p>
+<pre><code>@media srceen and(max-device－width:1024px){样式}
+</code></pre>
+
+<p>2.800px显屏 <br />
+3.640px显屏<br />
+4.ipad横版</p>
+<pre><code>@media srceen and (max-device－width:1024px) and(orientation定向:landscape横){样式}
+</code></pre>
+
+<p>5.ipad竖屏</p>
+<pre><code>@media screen and (max-device-width: 768px) and (orientation: portrait)
+</code></pre>
+
+<p>6.iPhone 和 Smartphones</p>
+<pre><code>@media screen and (min-device-width: 320px) and (min-device-width: 480px) 
+</code></pre>
+
+<p><img src="media实例.png" /></p>
+<h2>用户界面及其他重要属性</h2>
+<h3>resize用户自行拖拽宽高</h3>
+<p><strong>值：</strong><br />
+none:不允许拖拽<br />
+both:宽高都可<br />
+horizontal水平：仅修改宽度<br />
+vertical竖直：仅修改高<br />
+inherit:继承父元素resize属性值</p>
+<h3>outline外边框</h3>
+<pre><code>outline:red solid 2px;
+outline-offset:5px  //偏移量 正值为向外偏移，负值为向内偏移 需单独写
+outline：inherit
+</code></pre>
+
+<h3>content生成内容</h3>
+<p>配合:before（插入元素之前）:after（插入元素之后）使用<br />
+<strong>值：</strong> 
+none<br />
+attr()插入标签属性值</p>
+<pre><code>a:before{
+    content:attr(title); 
+}
+&lt;a href=&quot;#&quot; title=&quot;我要插进去&quot;&gt;  
+</code></pre>
+
+<p>url()插入外部资源 
+string插入字符串（直接插字符串）eg:content:&quot;插&quot;；</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
