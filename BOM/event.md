@@ -1,12 +1,12 @@
 
-##EVENT
-#1.焦点事件   
+# EVENT
+##  1.焦点事件   
 1.onfocus:当元素获取到焦点的时候触发  
 2.onblur：当元素失去焦点的时候触发  
 3.obj.focus()：给指定元素设置焦点  
 4.obj.blur()：取消指定焦点  
 5.obj.select()：选择指定的文本内容  
-#2.event:事件对象
+## 2.event:事件对象
 当一个事件发生的时候，和当前这个对象发生的这个事件有关的一些详细信息都会被临时保存到一个指定的地方-event对象，在需要的调用。（飞机-黑匣子）   
 
 事件对象必须在一个事件调用的函数里面使用才有内容  
@@ -25,12 +25,12 @@
 		alert(ev);
 	}
 	document.onclick = fn1;  
-#3.冒泡
+## 3.冒泡
 
 1.事件冒泡：当一个元素接收到一个事件的时候，会把他接收到的事件传播给他的父级。一直到顶层window.事件冒泡机制  
 2.阻止冒泡：当前要阻止冒泡的事件函数中调用event.cancelBubble = true;  
 
-#4.事件绑定的第二种形式：  
+## 4.事件绑定的第二种形式：  
  1.给是一个对象绑定一个事件处理函数的第一种形式：
 	
 	function fn1(){
@@ -69,7 +69,7 @@
 	document.addEventListener('click',fn1,false)
 	document.addEventListener('click',fn2,false)  
 
-#5.call:
+## 5.call:
 函数下的一个方法，call方法的第一个参数可以改变函数执行过程中的内部this指向，call方法的第二个参数开始就是原来函数的参数列表  
 1.
 	
@@ -85,7 +85,7 @@
 		fn1.call(document);
 	}); //this指向document 解决了指向window的问题
 
-大结局：
+### 大结局：
 	
 	function fn1(){
 			alert(1);
@@ -100,8 +100,8 @@
 			}
 		}
 		bind(document,'click',fn1);
-#6.事件捕获
-#7.事件函数的取消
+## 6.事件捕获
+## 7.事件函数的取消
 1.第一种事件绑定形式的取消  
 	
 	function fn1(){
@@ -115,7 +115,7 @@ ie:obj.detachEvent(事件名称,事件函数);
 标准:obj.removeEventListener(事件名称,事件函数);
 	
 	document.removeEventListener('click',fn1,false);    
-#键盘事件 
+## 键盘事件 
 1.onkeydown:当键盘按键按下的时候触发（如果按住不抬起会连续触发）  
 2.onkeyup:当键盘按键抬起的时候触发  
 3.
@@ -123,19 +123,19 @@ event.keyCode:数字类型 键盘按键的值 键值
   ctrlKey,shiftKey,altKey --> 返回布尔值  
 当一个事件发生的时候，如果ctrl||shift||alt是按下的状态，返回true,否则返回false  
 	不是所有元素都能接收键盘事件，能够相应用户输入元素，即能够接收焦点的元素就能接收键盘事件
-#事件默认行为：
+##v事件默认行为：
 当一个事件发生时浏览器自己默认做的事情  
 怎么阻止？  
 当前这个行为时什么事件触发的，然后再这个事件处理函数中使用return false;
 1.oncontextmenu:右键菜单事件，当右键菜单（环境菜单）显示出来的时候触发  
-#全局捕获
+## 全局捕获
 1.elem:setCapture():设置全局捕获  
 当我们给一个元素设置全局捕获以后，那么这个元素会监听到后续发生的所有事件，当有事件发生的事件，就会被当前设置了全局捕获的元素所触发  
 ie:有，并且有效果  
 ff:有,但没有效果  
 chrome:没有  
 2.1.elem:releaseCapture():设置全局捕获   
-#鼠标滚轮  
+## 鼠标滚轮  
 1.ie/chrome:onmousewheel   
 	
 	oDiv.onmousewheel = fn1;
@@ -150,7 +150,7 @@ event.wheelDelta 上：120 下-120
 	} 
 event.detail 上：-3 下：3   
 
-大结局 
+### 大结局 
 	 
 	function fn(ev){
 	var ev = ev||event;
@@ -172,7 +172,7 @@ event.detail 上：-3 下：3
 	}  
 return false阻止的时  obj.on事件名称 = fn所触发的默认行为  
 addEventListener绑定的事件需要通过event下面的preventDefault();  
-##cookie
+## cookie
 存储数据，当用户访问某个网站（网页）的时候，我们就可以通过cookie来向访问者电脑上存储数据.  
 1.不同浏览器存放的cookie位置不一样，也是不能通用的  
 2.cookie的存储是以域名形式进行区分的  
