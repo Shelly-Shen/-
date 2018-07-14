@@ -1,4 +1,4 @@
-##5.9 HTML杂记
+## 5.9 HTML杂记
 1.static和relative会占据文档流空间absolute和fixed脱离文档流。
 
 2.BFC(Block Formatting Contexts)直译为"块级格式化上下文"。Block Formatting Contexts就是页面上的一个隔离的渲染区域，容器里面的子元素不会在

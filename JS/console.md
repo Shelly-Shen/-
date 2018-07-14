@@ -1,5 +1,7 @@
-#console
-##什么是console?
+console  
+=============
+什么是console?
+---------
 * 用于调试JS  
 * 与alert的区别  
 1.alert alert阻断线程运行 弹出窗口会中断程序 console则不会  

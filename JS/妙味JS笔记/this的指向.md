@@ -1,8 +1,8 @@
-##关于this指向
+# 关于this指向
 
 this指的是调用当前方法（函数）的那个对象 
   
-一.无参数函数this的指向  
+## 一.无参数函数this的指向  
 
 `function fn1(){  alert(this)  }`  
 
@@ -12,12 +12,12 @@ this指的是调用当前方法（函数）的那个对象
      oBtn.onclick = function(){ fn() };   ===> window
       oBtn.onclick = function(){ fn(this) };   ===> oBtn
      `<button  onclick = "alert(this  fn(1))"></button>`      this===>button    fn1()里的this===>window   
-二.、带参数函数this的指向  
-1.
+## 二.、带参数函数this的指向  
+### 1.
      
      fn1(this)  
      function fn1(obj){  obj  }  obj===window    
-2.
+### 2.
 
      oDiv.onclick = function{
      fn1(this) 
@@ -25,7 +25,7 @@ this指的是调用当前方法（函数）的那个对象
      function fn1(obj){
      obj
      }    obj ===》oDiv   
-三.当this指向window时用that存储  
+## 三.当this指向window时用that存储  
 
     var that = null;
     oBtn.onclick = function(){
