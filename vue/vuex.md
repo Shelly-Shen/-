@@ -396,7 +396,7 @@ mutation和getters接收的第一个参数（state）是局部的
 	    ])
 	  }
 	}
-###模块注册
+### 模块注册
 
 	store.registerModule('myMoudule',{
 		...

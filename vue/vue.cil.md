@@ -1,4 +1,16 @@
 ##vue.cli
+###创建
+
+	npm install --global vue-cli
+	切换到项目目录
+	cd vuetest
+	
+	安装一来模块
+	npm install
+	运行
+	npm run dev
+	打包
+	npm run build
 main.js入口文件
 	
 	import Vue from 'vue'
