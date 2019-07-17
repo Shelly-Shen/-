@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>scroll背后的性能</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>scroll事件衍生出的浏览器背后性能的思考</h1>
+<p>问题：<br />
+  scroll事件下绑定的对一个dom元素的color修改，会不会影响到浏览器性能，需要做节流吗？	</p>
+<h2>渲染帧</h2>
+<p>概念：指的是浏览器从js执行到paint的一次绘制过程，帧与帧之间快速地切换，形成动画效果。    <br />
+目前大多数浏览器屏幕的刷新频率——60次/s，浏览器的渲染更新的页面的标准帧率也为60FPS。</p>
+<h3>帧渲染的过程</h3>
+<p>DOM Tree： 浏览器讲HTML解析成树形的数据结构。<br />
+CSS Rule Tree：浏览器将CSS解析成树形的数据结构。<br />
+Render Tree：DOM树和CSS规则树合并后生产Render树。<br />
+layout：有了Render Tree，浏览器已经能知道网页中有哪些节点、各个节点的CSS定义以及他们的从属关系，从而去计算出每个节点在屏幕中的位置。<br />
+painting: 按照算出来的规则，通过显卡，把内容画到屏幕上。
+<img src="scriptloop.jpg" /></p>
+<h3>渲染步骤：</h3>
+<p>浏览器内核拿到响应报文之后，渲染大概分为以下步骤</p>
+<p>解析html生产DOM树。<br />
+解析CSS规则。<br />
+根据DOM Tree和CSS Tree生成Render Tree。<br />
+根据Render树进行layout，负责各个元素节点的尺寸、位置计算。<br />
+绘制Render树(painting)，绘制页面像素信息。<br />
+浏览器会将各层的信息发送给GPU，GPU会将各层合成（composite），显示在屏幕上。  </p>
+<h2>浏览器渲染进程</h2>
+<p>blink和webkit引擎内部都是使用了两个进程来搞定JS执行、页面渲染之类的核心任务。</p>
+<ul>
+<li>Renderer进程
+主要进程，每个tab一个。这个进程负责执行JS和页面渲染。包含3个线程：Compositor Thread、Tile Worker、Main thread。</li>
+<li>GPU进程
+整个浏览器共用一个。主要是负责把Renderer进程中绘制好的tile位图作为纹理上传至GPU，并调用GPU的相关方法把纹理draw到屏幕上（一般的介绍浏览器渲染引擎的文章里都用paint这个词表述把内容光栅化和绘制到位图里，而用draw这个词表示GPU最终把纹理显示到屏幕上）。</li>
+</ul>
+<h3>Main thread</h3>
+<p>执行上述渲染步骤</p>
+<h3>Compositor Thread</h3>
+<p>这个线程既负责接收浏览器传来的垂直同步信号(从屏幕顶部到底部的绘制已经完成，指示着前一帧的结束，和新一帧的开始)， 也负责接收传来的用户交互，比如滚动。<br />
+Compositor Thread会直接负责处理这些输入，然后转换为对layer的位移和处理，并将新的帧直接commit到GPU Thread，从而直接输出新的页面。<br />
+当我们在滚动事件上注册了回调，Compositor Thread便会唤醒Main Thread，让后者去执行JS、完成重绘、重排等过程，产出新的纹理，然后Compositor Thread再进行相关纹理的commit至GPU Thread，完成输出。
+<img src="scriptoop.jpg" />
+在一个标准帧渲染时间16.7ms之内，浏览器需要完成Main线程的操作，并commit给Compositor进程
+<img src="compositor_no.jpg" /><br />
+主线程里操作太多，耗时长，commit的时间被推迟，浏览器来不及将页面draw到屏幕，导致丢帧，直接的影响就是页面卡顿。</p>
+<h3>通过Chrome DevTools来分析绘制复杂度和时间消耗</h3>
+<p><img src="scrollEvent.png" />  </p>
+<h4>本案例：</h4>
+<ul>
+<li>
+<p>一次屏幕刷新的时间间隔16.7ms(1/60)内，就算浏览器渲染了多次页面，屏幕也只刷新一次，这就造成了性能的浪费</p>
+<pre><code>function toogleBg() {
+  let title = document.querySelector('.title')
+  let scrollTop = Math.abs(M_WRAP.getBoundingClientRect().top)
+  if(scrollTop &lt; 10) {
+     title.style.color = 'rgba(225,225,225,0.0' + scrollTop*0.2+')'    
+   } else if(scrollTop &gt; 10 &amp;&amp; scrollTop &lt;=  50) {
+     title.style.color = 'rgba(225,225,225,0.' + scrollTop*0.2+')'
+   } else {
+     title.style.color = 'rgba(225,225,225,1')'            
+   }
+ }
+</code></pre>
+
+</li>
+</ul>
+<h4>当js逻辑更复杂</h4>
+<pre><code>function toogleBg() {
+  let title = document.querySelector('.title')
+  title.style.color = '#fff'
+  for( let m = 0; m&lt; 100; ++m) {
+    for(let n = 0; n &lt; 100; n++) {
+      navbar.style.color = '#fff'
+    }
+  }
+</code></pre>
+
+<p><img src="complex.png" /><br />
+主线程中JS计算时间过长，就会阻塞其他渲染工作，导致丢帧。前面提到每帧的渲染应该在16ms内完成，但在动画过程中，由于已经被占用了不少时间，所以JS代码运行耗时应该控制在3-4毫秒。如果真的有特别耗时且不操作DOM元素的纯计算工作，可以考虑放到Web Workers中执行。</p>
+<h2>优化方案</h2>
+<h3>节流</h3>
+<h4>1.定时器</h4>
+<p><strong>缺点</strong>：无法保证callback函数的执行时机，很可能在帧结束的时候执行，从而导致丢帧
+<img src="settimeout.png" /></p>
+<h4>2.requestAnimationFrame()</h4>
+<p>每秒60次执行回调——符合屏幕的刷新频率，遇到耗时长的操作，这个数字会降到30来保证稳定的帧数。</p>
+<h4>3.react fibar特性（分片）</h4>
+<p>把一个耗时长的任务分成很多小片，做异步渲染。</p>
+<h4>CSS优化方案</h4>
+<ul>
+<li>使用 transform 或者 opacity 来实现动画效果，将不涉及layout和paint</li>
+<li>对于较少可能变化的区域，防止页面其他部分重绘时影响这一片 提升合成层的方法：<br />
+   transform:translateZ(0) || will-change:transform
+(存在兼容性问题)</li>
+</ul>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
