@@ -15,12 +15,12 @@ painting: 按照算出来的规则，通过显卡，把内容画到屏幕上。
 ### 渲染步骤： 
 浏览器内核拿到响应报文之后，渲染大概分为以下步骤
 
-解析html生产DOM树。  
-解析CSS规则。  
-根据DOM Tree和CSS Tree生成Render Tree。  
-根据Render树进行layout，负责各个元素节点的尺寸、位置计算。  
-绘制Render树(painting)，绘制页面像素信息。  
-浏览器会将各层的信息发送给GPU，GPU会将各层合成（composite），显示在屏幕上。  
+1.解析html构建DOM树。  
+2.css解析器解析CSS规则。  
+3.根据DOM Tree和CSS Tree生成Render Tree。  
+4.根据Render树进行layout，负责各个元素节点的尺寸、位置计算。  
+4.绘制Render树(painting)，绘制页面像素信息。  
+5.浏览器会将各层的信息发送给GPU，调用GPU里的方法将会将各图层合成（composite），显示在屏幕上。  
 ## 浏览器渲染进程
 blink和webkit引擎内部都是使用了两个进程来搞定JS执行、页面渲染之类的核心任务。
 
