@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="box"></div>
+<div id="content"></div>
+</body>
+</html>
+<script type="text/javascript">
+	let didScroll = false
+	function a() {
+		var content = document.getElementById('content');
+		var box = document.getElementById('box');
+		var  scrollTop = window.scrollY;
+		// for( let m = 0; m< 100; ++m) {
+		//     for(let n = 0; n < 10; n++) {
+		    	if (scrollTop <= 50) {
+		    	box.style.height = scrollTop + 'px';
+		    	console.log(box.style.height);
+		    	}
+		    // }
+	  	// }
+	  	didScroll = false;
+	}
+	// requestAnimationFrame(callback: FrameRequestCallback)
+	// function throttleFn(){
+	// 	if ( !didScroll ) {
+	// 		window.requestAnimationFrame(a);
+	// 		didScroll = true;
+ //    	}
+	// }
+	// window.onscroll = function(e){
+	// 	// a()
+	// 	throttleFn()
+	// }
+	// serinterval
+	function throttleFn(){
+    	setInterval(() => {
+    		if ( didScroll ) {
+    			a()
+    		}
+	    },250)
+	}
+	window.onscroll = function(e){
+		didScroll = true;
+		// a()
+		throttleFn()
+	}
+</script>
+<style type="text/css">
+body {
+	height:3000px;
+}
+	#box{
+		height:100px;
+		width:100px;
+		background: red;
+		position: fixed;
+		top:0;
+	}
+	#content{
+				height:100px;
+		width:100px;
+		background: green;
+		float: right;
+	}
+</style>
