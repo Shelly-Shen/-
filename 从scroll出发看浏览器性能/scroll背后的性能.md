@@ -110,7 +110,9 @@ Compositor Thread会直接负责处理这些输入，然后转换为对layer的�
 #### 3.react fibar特性
 新思路：把一个耗时长的任务分成很多小片，逻辑和渲染交替运行，执行一小段逻辑后马上渲染一次，再执行一小段逻辑。
 ### CSS优化
-* 使用 transform 或者 opacity 来实现动画效果，将不涉及layout和paint
+* 使用 transform 或者 opacity 来实现动画效果    
+	（1）这些属性会创建渲染层，提升为合并层  
+	（2）不会导致重排  
 * 对于较少可能变化的区域，防止页面其他部分重绘时影响这一片 提升合成层的方法：  
    transform:translateZ(0) || will-change:transform
 (存在兼容性问题)
