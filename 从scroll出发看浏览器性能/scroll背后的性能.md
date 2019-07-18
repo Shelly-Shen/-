@@ -32,7 +32,7 @@ blink和webkit引擎内部都是使用了两个进程来搞定JS执行、页面�
 执行上述渲染步骤
 ### Compositor Thread
 这个线程既负责接收浏览器传来的垂直同步信号(从屏幕顶部到底部的绘制已经完成，指示着前一帧的结束，和新一帧的开始)， 也负责接收传来的用户交互，比如滚动。  
-Compositor Thread会直接负责处理这些输入，然后转换为对layer的位移和处理，并将新的帧直接commit到GPU Thread，从而直接输出新的页面。  
+Compositor Thread会直接负责处理这些输入，然后转换为对layer（构建和合并图层GUVIEW里的实例）的位移和处理，并将新的帧直接commit到GPU Thread，从而直接输出新的页面。  
 当我们在滚动事件上注册了回调，Compositor Thread便会唤醒Main Thread，让后者去执行JS、完成重绘、重排等过程，产出新的纹理，然后Compositor Thread再进行相关纹理的commit至GPU Thread，完成输出。
 ![](scriptoop.jpg)  
 在一个标准帧渲染时间16.7ms之内，浏览器需要完成Main线程的操作，并commit给Compositor进程
